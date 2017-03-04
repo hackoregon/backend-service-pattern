@@ -47,11 +47,11 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 * Run `start-proj.sh` to view your service's catalog page
 
-### 5. Note on service deployer credentials
+**Note** On service deployer credentials
 
 * Your service deployment user needs to belong to a group with the following policies:
 
-1. Access to the configuration bucket
+* Access to the configuration bucket
 
 ```json
 {
@@ -68,7 +68,7 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
     ]
 }
 ```
-2. Permissions to deploy to the ECS cluster
+* Permissions to deploy to the ECS cluster
 
 ```json
 

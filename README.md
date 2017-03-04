@@ -7,6 +7,7 @@ Simple static catalog of the the Hack Oregon service end points
 
 * Docker or Docker toolkit
 * Travis-CI
+* Cluster deployment keys. - Contact the DevOps team
 
 ## How to build
 

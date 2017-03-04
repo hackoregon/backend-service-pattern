@@ -18,7 +18,7 @@ Simple static catalog of the the Hack Oregon service end points
 #! /bin/bash
 # Setup Project Specfics - Make sure env.sh is in the .gitignore and .dockerignore
 export DOCKER_REPO=<YOUR REPO>
-export DOCKER_IMAGE=endpoint-service
+export DOCKER_IMAGE=<the name of your service>
 export DOCKER_USERNAME=<YOUR DOCKER Repository USER NAME>
 export DOCKER_PASSWORD=<YOUR DOCKER Repository PASSWORD>
 export ECS_CLUSTER=<THE NAME OF YOUR ECS CLUSTER>

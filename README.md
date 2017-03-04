@@ -7,7 +7,8 @@ Simple static catalog of the the Hack Oregon service end points
 
 * Docker or Docker toolkit
 * Travis-CI
-* Cluster deployment keys. - Contact the DevOps team
+* Cluster deployment keys  - Contact the DevOps team
+* ECS Service Name - Contact the DevOps team
 
 ## How to build
 
@@ -46,6 +47,52 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 * Run `start-proj.sh` to view your service's catalog page
 
+### 5. Note on service deployer credentials
+
+* Your service deployment user needs to belong to a group with the following policies:
+
+1. Access to the configuration bucket
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws:s3:::assign9-config/*"
+        }
+    ]
+}
+```
+2. Permissions to deploy to the ECS cluster
+
+```json
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:DescribeServices",
+                "ecs:DescribeTaskDefinition",
+                "ecs:DescribeTasks",
+                "ecs:ListTaskDefinitions",
+                "ecs:ListTasks",
+                "ecs:RegisterTaskDefinition",
+                "ecs:DeregisterTaskDefinition",
+                "ecs:UpdateService"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 ### 5. Setup your project in travis
 
 * Set the following environment variables
@@ -57,6 +104,9 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
  DOCKER_PASSWORD        # Your Docker Repository password
  ECS_CLUSTER            # The name of your ECS cluster
  ECS_SERVICE_NAME       # The name of the ECS service your deploying to
+ DEPLOY_TARGET          # The deployment environment. Valid values: integration,production
+ PROJ_SETTINGS_DIR      # the directory where we will place configuration files(s)
+ CONFIG_BUCKET          # The s3 configuration bucket
  AWS_DEFAULT_REGION     # THE AWS region where your cluster is located
  AWS_ACCESS_KEY_ID      # The service deployer keyid for your service
  AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service

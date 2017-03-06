@@ -46,6 +46,7 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 ### 4. Start the project
 
+* Make sure you've got a local copy of your projects's `project_config.py`
 * Run `start-proj.sh` to view your service's swaggerized API
 
 ### 5. Setup your project in travis

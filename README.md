@@ -42,7 +42,7 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 ### 3. Build the container
 
-* Run `build-proj.sh`  to build the Container
+* Run `build-proj.sh` to build the Container
 
 ### 4. Start the project
 
@@ -66,7 +66,7 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
  AWS_ACCESS_KEY_ID      # The service deployer keyid for your service
  AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service
 ```
-**Note:** If you were running this in a more real-world scenario you want your deployer user to have a role with the follwing policy documents attached
+**Note:** If you were running this in a more real-world scenario you want your deployer user to have a role with the following policy documents attached
 
 * Access to the configuration bucket
 

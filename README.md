@@ -46,7 +46,7 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 ### 4. Start the project
 
-* Run `start-proj.sh` to view your service's catalog page
+* Run `start-proj.sh` to view your service's swaggerized API
 
 ### 5. Setup your project in travis
 

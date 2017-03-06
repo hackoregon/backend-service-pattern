@@ -54,7 +54,7 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 ```bash
  DOCKER_REPO            # Your docker repository
- DOCKER_IMAGE           # endpoint-service
+ DOCKER_IMAGE           # The name of your service
  DOCKER_USERNAME        # Your Docker Repository user name
  DOCKER_PASSWORD        # Your Docker Repository password
  ECS_CLUSTER            # The name of your ECS cluster

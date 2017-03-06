@@ -47,9 +47,25 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 * Run `start-proj.sh` to view your service's catalog page
 
-**Note** On service deployer credentials
+### 5. Setup your project in travis
 
-* Your service deployment user needs to belong to a group with the following policies:
+* Set the following environment variables
+
+```bash
+ DOCKER_REPO            # Your docker repository
+ DOCKER_IMAGE           # endpoint-service
+ DOCKER_USERNAME        # Your Docker Repository user name
+ DOCKER_PASSWORD        # Your Docker Repository password
+ ECS_CLUSTER            # The name of your ECS cluster
+ ECS_SERVICE_NAME       # The name of the ECS service your deploying to
+ DEPLOY_TARGET          # The deployment environment. Valid values: integration,production
+ PROJ_SETTINGS_DIR      # the directory where we will place configuration files(s)
+ CONFIG_BUCKET          # The s3 configuration bucket
+ AWS_DEFAULT_REGION     # THE AWS region where your cluster is located
+ AWS_ACCESS_KEY_ID      # The service deployer keyid for your service
+ AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service
+```
+**Note:** If you were running this in a more real-world scenario you want your deployer user to have a role with the follwing policy documents attached
 
 * Access to the configuration bucket
 
@@ -91,25 +107,6 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
         }
     ]
 }
-```
-
-### 5. Setup your project in travis
-
-* Set the following environment variables
-
-```bash
- DOCKER_REPO            # Your docker repository
- DOCKER_IMAGE           # endpoint-service
- DOCKER_USERNAME        # Your Docker Repository user name
- DOCKER_PASSWORD        # Your Docker Repository password
- ECS_CLUSTER            # The name of your ECS cluster
- ECS_SERVICE_NAME       # The name of the ECS service your deploying to
- DEPLOY_TARGET          # The deployment environment. Valid values: integration,production
- PROJ_SETTINGS_DIR      # the directory where we will place configuration files(s)
- CONFIG_BUCKET          # The s3 configuration bucket
- AWS_DEFAULT_REGION     # THE AWS region where your cluster is located
- AWS_ACCESS_KEY_ID      # The service deployer keyid for your service
- AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service
 ```
 
 **IMPORTANT:** Make sure that you don't store AWS or Docker repository credentials in your github repo or expose them in travis

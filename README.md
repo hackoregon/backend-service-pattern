@@ -1,7 +1,8 @@
 ## Hack Oregon Exemplar Backend Service
 
 ## Purpose
-Simple static catalog of the the Hack Oregon service end points
+
+Demonstrates CI/CD for HackOregon Django Service
 
 ## Dependencies
 

@@ -1,5 +1,7 @@
 ## Hack Oregon Exemplar Backend Service
 
+NOTE: this is based on the Homelessness team's backend repo, and as such still includes many hardcoded references to "homeless" and/or "homelessness".  Obviously you will updates all such app-specific references when implementing this pattern for your project's application.  DO NOT JUST COPY/PASTE THIS REPO.
+
 ## Purpose
 
 Demonstrates CI/CD for HackOregon Django Service

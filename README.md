@@ -1,3 +1,6 @@
+
+[![Build Status](https://travis-ci.org/hackoregon/backend-service-pattern.svg?branch=master)](https://travis-ci.org/hackoregon/backend-service-pattern)
+
 ## Hack Oregon Exemplar Backend Service
 
 NOTE: this is based on the Homelessness team's backend repo, and as such still includes many hardcoded references to "homeless" and/or "homelessness". You will to update all such app-specific references when implementing this pattern for your project's application.  

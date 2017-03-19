@@ -1,6 +1,6 @@
 ## Hack Oregon Exemplar Backend Service
 
-NOTE: this is based on the Homelessness team's backend repo, and as such still includes many hardcoded references to "homeless" and/or "homelessness".  Obviously you will updates all such app-specific references when implementing this pattern for your project's application.  DO NOT JUST COPY/PASTE THIS REPO.
+NOTE: this is based on the Homelessness team's backend repo, and as such still includes many hardcoded references to "homeless" and/or "homelessness". You will to update all such app-specific references when implementing this pattern for your project's application.  
 
 ## Purpose
 
@@ -22,10 +22,6 @@ Demonstrates CI/CD for HackOregon Django Service
 ```bash
 #! /bin/bash
 # Setup Project Specfics - Make sure env.sh is in the .gitignore and .dockerignore
-export DOCKER_REPO=<YOUR REPO>
-export DOCKER_IMAGE=<the name of your service>
-export DOCKER_USERNAME=<YOUR DOCKER Repository USER NAME>
-export DOCKER_PASSWORD=<YOUR DOCKER Repository PASSWORD>
 export ECS_CLUSTER=<THE NAME OF YOUR ECS CLUSTER>
 export ECS_SERVICE_NAME=<THE NAME OF THE SERVICE YOUR DEPLOYING TO>
 echo "##############################"
@@ -44,74 +40,69 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
 
 ### 3. Build the container
 
-* Run `build-proj.sh` to build the Container
+* Run `build-proj -l` to build your container locally
 
 ### 4. Start the project
 
 * Make sure you've got a local copy of your projects's `project_config.py`
-* Run `start-proj.sh` to view your service's swaggerized API
+* Run `start-proj -` to view your service's swaggerized API
 
 ### 5. Setup your project in travis
 
 * Set the following environment variables
 
 ```bash
- DOCKER_REPO            # Your docker repository
- DOCKER_IMAGE           # The name of your service
- DOCKER_USERNAME        # Your Docker Repository user name
- DOCKER_PASSWORD        # Your Docker Repository password
- ECS_CLUSTER            # The name of your ECS cluster
- ECS_SERVICE_NAME       # The name of the ECS service your deploying to
- DEPLOY_TARGET          # The deployment environment. Valid values: integration,production
- PROJ_SETTINGS_DIR      # the directory where we will place configuration files(s)
- CONFIG_BUCKET          # The s3 configuration bucket
- AWS_DEFAULT_REGION     # THE AWS region where your cluster is located
- AWS_ACCESS_KEY_ID      # The service deployer keyid for your service
- AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service
+ ECS_SERVICE_NAME       #Your service name as defined on the ECS Cluster. Valid values for the integration cluster are:
+                         # - civiclab            "hacko-integration-CivicLabService-SHCQWODY5CF4-Service-5R2TN149GD71"
+                         # - budget              "hacko-integration-BudgetService-16MVULLFXXIDZ-Service-1BKKDDHBU8RU4"
+                         # - emergency response  "hacko-integration-EmerreponseService-1LC4181KR6KN5-Service-1WR6VWC6KKIEP"
+                         # - homelessness        "hacko-integration-HomelessService-1MT93S2GQTJZ4-Service-15OXS2BV07GN0"
+                         # - housing             "hacko-integration-HousingService-1LLLKFJR36AJ5-Service-15AO7849OUCYV"
+                         # - transportation      "hacko-integration-transportService-67KME5SFWBJO-Service-12UZIOOA2FNIK"
+                        #
+ ECS_CLUSTER            # Use "hacko-integration"
+                        #
+ DOCKER_REPO            # Use "845828040396.dkr.ecr.us-west-2.amazonaws.com"
+                        #
+ DOCKER_IMAGE           # The name of your service. Valid values are:
+                        # - civiclab            "civic-lab-service"
+                        # - budget              "budget-service"
+                        # - emergency response  "emergency-service"
+                        # - homelessness        "homeless-service"
+                        # - housing             "housing-service"
+                        # - transportation      "transport-service"
+                        #
+ DOCKER_USERNAME        # use "AWS"
+                        #
+ DOCKER_PASSWORD        # Contact the DevOps team to get this and help with setup
+                        #
+ DEPLOY_TARGET          # What environment you are deploying to. Valid values are:
+                        # - For travis integration deploys: "integration"
+                        #
+ PROJ_SETTINGS_DIR      # the directory (relative to your top-level) where your configuration files are found. Valid values are:
+                        # - civiclab            "civiclabSettings"
+                        # - budget              "budgetAPI"
+                        # - emergency response  "emerresponseAPI"
+                        # - homelessness        "homelessAPI"
+                        # - housing             "housingAPI"
+                        # - transportation      "transportationAPI"
+
+                        #
+ CONFIG_BUCKET          # The s3 configuration bucket. Valid values:
+                        # - civiclab            "hacko-civiclab-config"
+                        # - budget              "hacko-budget-config"
+                        # - emergency response  "emerresponse-config"
+                        # - homelessness        "hacko-homeless-config"
+                        # - housing             "hacko-housing-config"
+                        # - transportation      "hacko-transportation-config"
+ AWS_DEFAULT_REGION     # Use "us-west-2"
+                        #
+ AWS_ACCESS_KEY_ID      # The service deployer keyid for your service (Always hide in travis)                
+                        #
+ AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service (Always hide in travis)
 ```
-**Note:** If you were running this in a more real-world scenario you want your deployer user to have a role with the following policy documents attached
 
 * Access to the configuration bucket
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:GetObject",
-                "s3:GetObjectVersion"
-            ],
-            "Resource": "arn:aws:s3:::assign9-config/*"
-        }
-    ]
-}
-```
-* Permissions to deploy to the ECS cluster
-
-```json
-
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ecs:DescribeServices",
-                "ecs:DescribeTaskDefinition",
-                "ecs:DescribeTasks",
-                "ecs:ListTaskDefinitions",
-                "ecs:ListTasks",
-                "ecs:RegisterTaskDefinition",
-                "ecs:DeregisterTaskDefinition",
-                "ecs:UpdateService"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
 
 **IMPORTANT:** Make sure that you don't store AWS or Docker repository credentials in your github repo or expose them in travis
 

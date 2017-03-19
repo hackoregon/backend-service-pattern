@@ -5,3 +5,5 @@ venv3
 cover
 static/
 env.sh
+myenv.sh
+localtst.sh

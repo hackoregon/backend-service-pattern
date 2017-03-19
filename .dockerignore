@@ -3,3 +3,5 @@ project_config.py
 images/
 static/
 staticfiles
+myenv.sh
+localtst.sh

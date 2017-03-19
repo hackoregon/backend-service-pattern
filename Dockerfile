@@ -5,8 +5,8 @@ RUN mkdir /code
 VOLUME /code
 WORKDIR /code
 ADD requirements.txt /code/
-RUN pip install --upgrade --user awscli
 RUN pip install -r requirements.txt
+RUN pip install --upgrade --user awscli
 RUN python
 ADD . /code/
 ENTRYPOINT [ "/code/bin/docker-entrypoint.sh" ]

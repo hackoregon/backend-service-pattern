@@ -4,68 +4,96 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
 from . import serializers
-from . import models 
+from . import models
 
+class BaseListView(generics.ListAPIView):
+    """
+    abstract class that adds querystring year search to all
+    generics.ListAPIView views using querystring params.
 
-# don't need this root view if team decides to use swagger
-@api_view(['GET'])
-def Team_homelessness_api_root(request, format=None):
-    "The following endpoints are available"
-    return Response({
-        'Disability table list': 
-        reverse('homeless:disability-list', request=request, format=format),
+    Ex.
+    http://example.com/homeless/<endpoint_name>/?year=2015
+    """
 
-        'Ethnicity table list': 
-        reverse('homeless:ethnicity-list', request=request, format=format),
+    def get_queryset(self):
+        queryset = self.queryset.all()
+        year_url = self.request.query_params.get('year', None)
 
-        'Gender table list': 
-        reverse('homeless:gender-list', request=request, format=format),
+        if year_url is not None:
+            queryset = queryset.filter(year__exact=year_url)
+        return queryset
 
-        'Geographiclocation table list': 
-        reverse('homeless:geo-list', request=request, format=format),
+    class Meta:
+        abstract = True
 
-        'Homelessindividuals table list': 
-        reverse('homeless:individuals-list', request=request, format=format),
-
-        'Veterans table list': 
-        reverse('homeless:veterans-list', request=request, format=format),        
-    })
-
-
-class ListDisability(generics.ListAPIView):
+class ListDisability(BaseListView):
     """Add documentation for endpoint use here"""
-    queryset = models.Disability.objects.all()
+    queryset = models.Disability.objects
     serializer_class = serializers.DisabilitySerializer
 
-class ListEthnicity(generics.ListAPIView):
+
+class ListEthnicity(BaseListView):
     """Add documentation for endpoint use here"""
     queryset = models.Ethnicity.objects.all()
     serializer_class = serializers.EthnicitySerializer
 
-class ListGender(generics.ListAPIView):
+
+class ListGender(BaseListView):
     queryset = models.Gender.objects.all()
     serializer_class = serializers.GenderSerializer
 
-class ListGeographiclocation(generics.ListAPIView):
-    queryset = models.Geographiclocation.objects.all()
-    serializer_class = serializers.GeographiclocationSerializer
 
-class ListHomelessindividuals(generics.ListAPIView):
-    queryset = models.Homelessindividuals.objects.all()
-    serializer_class = serializers.HomelessindividualsSerializer
+class ListGeographiclocation(BaseListView):
+    queryset = models.GeographicLocation.objects.all()
+    serializer_class = serializers.GeographicLocationSerializer
 
-class ListVeterans(generics.ListAPIView):
+
+class ListHomelessindividuals(BaseListView):
+    queryset = models.HomelessIndividuals.objects.all()
+    serializer_class = serializers.HomelessIndividualsSerializer
+
+
+class ListVeterans(BaseListView):
     queryset = models.Veterans.objects.all()
-    serializer_class = serializers.VeteransSerializer 
+    serializer_class = serializers.VeteransSerializer
 
 
+class ListAgeHouseComp(BaseListView):
+    queryset = models.AgeHouseComposition.objects.all()
+    serializer_class = serializers.AgeHouseCompositionSerializer
 
 
+class ListChronicHomelessness(BaseListView):
+    queryset = models.ChronicHomelessness.objects.all()
+    serializer_class = serializers.ChronicHomelessnessSerializer
 
 
+class ListDomesticViolence(BaseListView):
+    queryset = models.DomesticViolence.objects.all()
+    serializer_class = serializers.DomesticViolenceSerializer
 
 
+class ListLengthOfHomelessness(BaseListView):
+    queryset = models.LengthOfHomelessness.objects.all()
+    serializer_class = serializers.LengthOfHomelessnessSerializer
 
 
+class ListSleepingLocation(BaseListView):
+    queryset = models.SleepingLocation.objects.all()
+    serializer_class = serializers.SleepingLocationSerializer
 
+class ListAcsage(BaseListView):
+    queryset = models.Acsage.objects.all()
+    serializer_class = serializers.AcsageSerializer
 
+class ListAcsdisability(BaseListView):
+    queryset = models.Acsdisability.objects.all()
+    serializer_class = serializers.AcsdisabilitySerializer
+
+class ListAcsrace(BaseListView):
+    queryset = models.Acsrace.objects.all()
+    serializer_class = serializers.AcsraceSerializer
+
+class ListAcsveteran(BaseListView):
+    queryset = models.Acsveteran.objects.all()
+    serializer_class = serializers.AcsveteranSerializer

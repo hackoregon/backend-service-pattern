@@ -28,8 +28,7 @@ SECRET_KEY = project_config.DJANGO_SECRET
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# SECURITY WARNING: don't run with .elb.amazonaws.com in production!
-ALLOWED_HOSTS = ['127.0.0.1','localhost','.elb.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','hacko-integration-658279555.us-west-2.elb.amazonaws.com']
 
 # Get the IPV4 address we're working with on AWS
 # The Loadbalancer uses this ip address for healthchecks
@@ -41,7 +40,6 @@ except requests.exceptions.RequestException:
 
 if EC2_PRIVATE_IP:
     ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
-
 
 # Application definition
 
@@ -56,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'django_nose',
     'homelessApp',
+    #'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +86,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'homelessAPI.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -138,18 +138,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = "/homeless/static/"
-
-#STATIC_ROOT = BASE_DIR + STATIC_URL
 #STATIC_ROOT = BASE_DIR + '/homelessApp/static/'
 
-# testing setup
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# # testing setup
+# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-# auto includes these command line args that are run with nose
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=homelessApp',
-    '--cover-html'
-]
+# # auto includes these command line args that are run with nose
+# NOSE_ARGS = [
+#     '--with-coverage',
+#     '--cover-package=homelessApp',
+#     '--cover-html'
+# ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+# }

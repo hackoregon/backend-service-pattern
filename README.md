@@ -22,17 +22,15 @@ Demonstrates CI/CD for HackOregon Django Service
 ```bash
 #! /bin/bash
 # Setup Project Specfics - Make sure env.sh is in the .gitignore and .dockerignore
-export ECS_CLUSTER=<THE NAME OF YOUR ECS CLUSTER>
-export ECS_SERVICE_NAME=<THE NAME OF THE SERVICE YOUR DEPLOYING TO>
+export DOCKER_IMAGE= #see section 5 for conventions
+export PROJ_SETTINGS_DIR= #see section 5 for conventions
+export DEPLOY_TARGET=dev # it's always dev on your local machine
 echo "##############################"
-echo  Your Local Project Environment
+echo  Your Local Project Environement
 echo "##############################"
-echo DOCKER_REPO: $DOCKER_REPO
-echo DOCKER_IMAGE: $DOCKER_IMAGE
-echo DOCKER_USERNAME: $DOCKER_USERNAME
-echo DOCKER_PASWORD: $DOCKER_PASSWORD
-echo ECS_CLUSTER: $ECS_CLUSTER
-echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
+echo DOCKER_IMAGE $DOCKER_IMAGE
+echo PROJ_SETTINGS_DIR $PROJ_SETTINGS_DIR
+echo DEPLOY_TARGET $DEPLOY_TARGET
 ```
 ### 2. Setup your local environment
 
@@ -101,8 +99,6 @@ echo ECS_SERVICE_NAME: $ECS_SERVICE_NAME
                         #
  AWS_SECRET_ACCESS_KEY  # The service deployer secret key for your service (Always hide in travis)
 ```
-
-* Access to the configuration bucket
 
 **IMPORTANT:** Make sure that you don't store AWS or Docker repository credentials in your github repo or expose them in travis
 

@@ -4,6 +4,7 @@ venv3
 .DS_Store
 cover
 static/
+staticfiles/
 env.sh
 myenv.sh
 localtst.sh

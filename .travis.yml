@@ -4,4 +4,4 @@ services:
 script:
   - './bin/build-proj -t'
 after_success:
-  - ./bin/push.sh
+  - ./bin/push

@@ -47,7 +47,7 @@ echo DEPLOY_TARGET $DEPLOY_TARGET
 
 ### 5. Setup your project in travis
 
-* Set the following environment variables
+* Set up the following environment variables
 
 ```bash
  ECS_SERVICE_NAME       #Your service name as defined on the ECS Cluster. Valid values for the integration cluster are:

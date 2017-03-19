@@ -11,7 +11,9 @@ Demonstrates CI/CD for HackOregon Django Service
 * Docker or Docker toolkit
 * Travis-CI
 * Cluster deployment keys  - Contact the DevOps team
-* ECS Service Name - Contact the DevOps team
+* ECR Password - Contact the DevOps Team
+* ECS Service Name - See Section 5
+
 
 ## How to build
 

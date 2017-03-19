@@ -51,12 +51,12 @@ echo DEPLOY_TARGET $DEPLOY_TARGET
 
 ```bash
  ECS_SERVICE_NAME       #Your service name as defined on the ECS Cluster. Valid values for the integration cluster are:
-                         # - civiclab            "hacko-integration-CivicLabService-SHCQWODY5CF4-Service-5R2TN149GD71"
-                         # - budget              "hacko-integration-BudgetService-16MVULLFXXIDZ-Service-1BKKDDHBU8RU4"
-                         # - emergency response  "hacko-integration-EmerreponseService-1LC4181KR6KN5-Service-1WR6VWC6KKIEP"
-                         # - homelessness        "hacko-integration-HomelessService-1MT93S2GQTJZ4-Service-15OXS2BV07GN0"
-                         # - housing             "hacko-integration-HousingService-1LLLKFJR36AJ5-Service-15AO7849OUCYV"
-                         # - transportation      "hacko-integration-transportService-67KME5SFWBJO-Service-12UZIOOA2FNIK"
+                        # - civiclab            "hacko-integration-CivicLabService-SHCQWODY5CF4-Service-5R2TN149GD71"
+                        # - budget              "hacko-integration-BudgetService-16MVULLFXXIDZ-Service-1BKKDDHBU8RU4"
+                        # - emergency response  "hacko-integration-EmerreponseService-1LC4181KR6KN5-Service-1WR6VWC6KKIEP"
+                        # - homelessness        "hacko-integration-HomelessService-1MT93S2GQTJZ4-Service-15OXS2BV07GN0"
+                        # - housing             "hacko-integration-HousingService-1LLLKFJR36AJ5-Service-15AO7849OUCYV"
+                        # - transportation      "hacko-integration-transportService-67KME5SFWBJO-Service-12UZIOOA2FNIK"
                         #
  ECS_CLUSTER            # Use "hacko-integration"
                         #

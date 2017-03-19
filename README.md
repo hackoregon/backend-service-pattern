@@ -43,7 +43,7 @@ echo DEPLOY_TARGET $DEPLOY_TARGET
 ### 4. Start the project
 
 * Make sure you've got a local copy of your projects's `project_config.py`
-* Run `start-proj -` to view your service's swaggerized API
+* Run `start-proj -t` to view your service's swaggerized API
 
 ### 5. Setup your project in travis
 

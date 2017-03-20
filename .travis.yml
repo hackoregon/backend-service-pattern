@@ -2,6 +2,6 @@ sudo: required
 services:
   - docker
 script:
-  - './bin/build-proj -t'
+  - './bin/build-test-proj -t'
 after_success:
   - ./bin/push

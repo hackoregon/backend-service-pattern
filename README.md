@@ -36,14 +36,22 @@ echo DEPLOY_TARGET $DEPLOY_TARGET
 
 * Run `source env.sh` to setup your environment
 
-### 3. Build the container
+### 3. Build & Test the container
 
-* Run `build-proj -l` to build your container locally
+* Run `./bin/build-test-proj -l` to build your container locally
+
+**Note:** For this to work correctly you will need to get your DBA to run the following SQL as the postgres user:
+
+```SQL
+GRANT CONNECT ON database postgres TO <your_db_user>;
+GRANT USAGE ON SCHEMA public to <your_db_user>;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO <your_db_user>;
+```
 
 ### 4. Start the project
 
 * Make sure you've got a local copy of your projects's `project_config.py`
-* Run `start-proj -l` to view your service's swaggerized API
+* Run `./bin/start-proj -l` to view your service's swaggerized API
 
 ### 5. Setup your project in travis
 
@@ -102,5 +110,5 @@ echo DEPLOY_TARGET $DEPLOY_TARGET
 
 **IMPORTANT:** Make sure that you don't store AWS or Docker repository credentials in your github repo or expose them in travis
 
-### 6. Commit  
+### 7. Commit  
 * Commit and push your code and ensure travis builds and deploys correctly

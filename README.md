@@ -1,6 +1,9 @@
+
+[![Build Status](https://travis-ci.org/hackoregon/backend-service-pattern.svg?branch=master)](https://travis-ci.org/hackoregon/backend-service-pattern)
+
 ## Hack Oregon Exemplar Backend Service
 
-NOTE: this is based on the Homelessness team's backend repo, and as such still includes many hardcoded references to "homeless" and/or "homelessness". You will to update all such app-specific references when implementing this pattern for your project's application.  
+NOTE: this is based on the Homelessness team's backend repo, and as such still includes many hardcoded references to "homeless" and/or "homelessness". You will want to update all such app-specific references when implementing this pattern for your project's application.  
 
 ## Purpose
 
@@ -11,7 +14,9 @@ Demonstrates CI/CD for HackOregon Django Service
 * Docker or Docker toolkit
 * Travis-CI
 * Cluster deployment keys  - Contact the DevOps team
-* ECS Service Name - Contact the DevOps team
+* ECR Password - Contact the DevOps Team
+* ECS Service Name - See Section 5
+
 
 ## How to build
 
@@ -59,12 +64,12 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO <your_db_user>;
 
 ```bash
  ECS_SERVICE_NAME       #Your service name as defined on the ECS Cluster. Valid values for the integration cluster are:
-                         # - civiclab            "hacko-integration-CivicLabService-SHCQWODY5CF4-Service-5R2TN149GD71"
-                         # - budget              "hacko-integration-BudgetService-16MVULLFXXIDZ-Service-1BKKDDHBU8RU4"
-                         # - emergency response  "hacko-integration-EmerreponseService-1LC4181KR6KN5-Service-1WR6VWC6KKIEP"
-                         # - homelessness        "hacko-integration-HomelessService-1MT93S2GQTJZ4-Service-15OXS2BV07GN0"
-                         # - housing             "hacko-integration-HousingService-1LLLKFJR36AJ5-Service-15AO7849OUCYV"
-                         # - transportation      "hacko-integration-transportService-67KME5SFWBJO-Service-12UZIOOA2FNIK"
+                        # - civiclab            "hacko-integration-CivicLabService-SHCQWODY5CF4-Service-5R2TN149GD71"
+                        # - budget              "hacko-integration-BudgetService-16MVULLFXXIDZ-Service-1BKKDDHBU8RU4"
+                        # - emergency response  "hacko-integration-EmerreponseService-1LC4181KR6KN5-Service-1WR6VWC6KKIEP"
+                        # - homelessness        "hacko-integration-HomelessService-1MT93S2GQTJZ4-Service-15OXS2BV07GN0"
+                        # - housing             "hacko-integration-HousingService-1LLLKFJR36AJ5-Service-15AO7849OUCYV"
+                        # - transportation      "hacko-integration-transportService-67KME5SFWBJO-Service-12UZIOOA2FNIK"
                         #
  ECS_CLUSTER            # Use "hacko-integration"
                         #

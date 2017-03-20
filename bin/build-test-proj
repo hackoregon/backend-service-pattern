@@ -5,11 +5,11 @@ while getopts ":lt" opt; do
     case "$opt" in
         l)
           docker-compose -f local-docker-compose.yml build
-          docker-compose -f local-docker-compose.yml exec homeless-service python manage.py test --noinput
+          docker-compose -f local-docker-compose.yml exec $DOCKER_IMAGE python manage.py test --noinput
           ;;
         t)
           docker-compose -f travis-docker-compose.yml build
-          docker-compose -f travis-docker-compose.yml exec homeless-service python manage.py test --noinput
+          docker-compose -f travis-docker-compose.yml exec "${DOCKER_REPO}/${DEPLOY_TARGET}/${DOCKER_IMAGE}:latest" python manage.py test --noinput
           ;;
         *)
           usage

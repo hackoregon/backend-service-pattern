@@ -6,6 +6,7 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
   if [ "$TRAVIS_BRANCH" == "master" ]; then
     pip install --user awscli
     export PATH=$PATH:$HOME/.local/bin
+    eval $(aws ecr get-login --region $AWS_DEFAULT_REGION)
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" "$DOCKER_REPO"
     docker push "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest
     ./bin/ecs-deploy.sh  \

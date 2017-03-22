@@ -83,9 +83,6 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO <your_db_user>;
                         # - housing             "housing-service"
                         # - transportation      "transport-service"
                         #
- DOCKER_USERNAME        # use "AWS"
-                        #
- DOCKER_PASSWORD        # Contact the DevOps team to get this and help with setup
                         #
  DEPLOY_TARGET          # What environment you are deploying to. Valid values are:
                         # - For travis integration deploys: "integration"

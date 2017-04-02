@@ -85,7 +85,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO <your_db_user>;
                         #
                         #
  DEPLOY_TARGET          # What environment you are deploying to. Valid values are:
-                        # - For travis integration deploys: "integration"
+                        # - For travis integration deploys: "travis"
                         #
  PROJ_SETTINGS_DIR      # the directory (relative to your top-level) where your configuration files are found. Valid values are:
                         # - civiclab            "civiclabSettings"

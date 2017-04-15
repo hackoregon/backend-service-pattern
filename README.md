@@ -7,7 +7,7 @@ NOTE: this is based on the Homelessness team's backend repo, and as such still i
 
 ## Purpose
 
-Demonstrates CI/CD for HackOregon Django Service
+Demonstrates CI/CD for HackOregon Django service
 
 ## Dependencies
 

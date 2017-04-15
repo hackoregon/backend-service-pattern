@@ -8,8 +8,12 @@ https://docs.djangoproject.com/en/1.10/howto/deployment/wsgi/
 """
 
 import os
+from gevent import monkey; monkey.patch_all()
+from psycogreen.gevent import patch_psycopg
+patch_psycopg()
 
 from django.core.wsgi import get_wsgi_application
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "homelessAPI.settings")
 
